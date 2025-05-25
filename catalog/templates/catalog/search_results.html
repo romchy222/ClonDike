@@ -1,0 +1,18 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+  <h1>Результаты поиска для "{{ query }}"</h1>
+
+  {% if results %}
+    <ul>
+      {% for product in results %}
+        <li>
+          <a href="{% url 'catalog:product_detail' product.pk %}">{{ product.name }}</a>
+          <p>{{ product.description|truncatewords:20 }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Ничего не найдено.</p>
+  {% endif %}
+{% endblock %}

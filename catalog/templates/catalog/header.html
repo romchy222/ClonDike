@@ -1,0 +1,87 @@
+
+<!-- ─── верхняя техническая полоса ─────────────────────── -->
+<div class="topbar">
+  <div class="container flex between middle">
+    <div class="topbar-left flex gap-16">
+      <span class="city"><span class="material-symbols-outlined icon">location_on</span>г. Калач-на-Дону | ул.Кирова 37</span>
+    </div>
+      
+    <div class="topbar-right flex gap-16">
+      <a class="phone" href="tel:88047000474">
+            <span class="material-symbols-outlined icon">call</span> 8&nbsp;(804)&nbsp;700-04-74
+       </a>
+      <a class="profile" href="#" aria-label="Профиль">
+        <span class="material-symbols-outlined icon"> person </span>
+      </a>
+        <form method="GET" action="{% url 'catalog:search' %}" class="search-form" role="search">
+        <input type="text" name="q" placeholder="Поиск по сайту..." required />
+        <button type="submit" aria-label="Поиск">
+        <span class="material-symbols-outlined icon">search</span>
+        </button> 
+    </form>
+    </div>
+  </div>
+</div>
+
+    <!-- ─── sticky-header ───────────────────────────────────── -->
+    <header class="header">
+        <div class="container flex between middle">
+            <a class="logo" href="#"><img src="https://avatars.mds.yandex.net/get-altay/8133749/2a00000186e91b511e59bee15dd3c45008fc/XS" alt="Grand Line"></a>
+
+            <!-- десктоп-меню -->
+            <nav class="nav desktop-only">
+                <ul>
+                    <li class="has-mega">
+                        <a href="#catalog">КАТАЛОГ
+                            <span class="material-symbols-outlined icon">menu</span>
+                        </a>
+                    </li>
+
+                    <li><a href="#shop">ПОДАТЬ ЗАЯВКУ 
+                        <span class="material-symbols-outlined icon">shopping_cart</span></a></li>
+                    <li><a href="#gallery">ГАЛЕРЕЯ 
+                        <span class="material-symbols-outlined icon">photo_camera</span></a></li>
+                    <li><a href="#company">О КОМПАНИИ<span class="material-symbols-outlined icon">View_Kanban</span></a></li>
+                    <li><a href="#promo">АКЦИИ<span class="material-symbols-outlined icon">Percent</span></a></li>
+                    <li><a href="#where">ГДЕ КУПИТЬ? <span class="material-symbols-outlined icon">location_on</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- бургер-кнопка (моб.) -->
+            <button class="burger mobile-only" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <!-- off-canvas меню (моб.) -->
+        <nav class="nav mobile-offcanvas">
+            <ul>
+                <li><a href="#catalog">Каталог товаров</a></li>
+                <li><a href="#shop">Подать заявку</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#company">О компании</a></li>
+                <li><a href="#promo">Акции</a></li>
+                <li><a href="#where">Где купить</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ─── виджет «написать» ──────────────────────────────── -->
+    <a class="widget-chat shadow" href="#">Напишите нам онлайн</a>
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.burger');
+      const mobileMenu = document.querySelector('.mobile-offcanvas');
+
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        burger.classList.toggle('active');
+      });
+
+      // закрывать при клике по ссылкам
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          burger.classList.remove('active');
+        });
+      });
+    });</script>

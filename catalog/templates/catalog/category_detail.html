@@ -1,0 +1,21 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}Категория: {{ category.name }}{% endblock %}
+
+{% block content %}
+<h1>Товары категории: {{ category.name }}</h1>
+<div class="products">
+  {% for product in products %}
+    <div class="product-card">
+      <a href="{% url 'catalog:product_detail' product.pk %}">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
+        <h2>{{ product.name }}</h2>
+      </a>
+    </div>
+  {% empty %}
+    <p>Товары не найдены.</p>
+  {% endfor %}
+</div>
+{% endblock %}
